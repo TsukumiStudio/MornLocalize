@@ -1,7 +1,6 @@
-using MornUGUI;
 using UnityEngine;
 
-namespace MornLocalize
+namespace MornLib
 {
     [ExecuteAlways]
     [DisallowMultipleComponent]

@@ -1,7 +1,7 @@
 using System;
 using UniRx;
 
-namespace MornLocalize
+namespace MornLib
 {
     public sealed class MornLocalizeCore
     {

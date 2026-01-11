@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MornLocalize
+namespace MornLib
 {
     internal sealed class ReadOnlyAttribute : PropertyAttribute
     {

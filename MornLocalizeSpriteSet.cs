@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MornLocalize
+namespace MornLib
 {
     [Serializable]
     public struct MornLocalizeSpriteSet

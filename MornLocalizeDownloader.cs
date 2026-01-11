@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using MornSpreadSheet;
 using UnityEditor;
 
-namespace MornLocalize
+namespace MornLib
 {
     /// <summary>エディタ専用のローカライズデータダウンロード機能</summary>
     public static class MornLocalizeDownloader
@@ -47,7 +46,7 @@ namespace MornLocalize
                         // シート名更新はMornSpreadSheetDownloaderで別途実行する必要があります
 
                         // シートごとにダウンロード（進捗表示対応）
-                        var sheets = new List<MornSpreadSheet.MornSpreadSheet>();
+                        var sheets = new List<MornLib.MornSpreadSheet>();
                         foreach (var sheetName in master.SheetNames)
                         {
                             var progress = (float)currentSheetIndex / totalSheetCount;

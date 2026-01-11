@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
 
-namespace MornLocalize
+namespace MornLib
 {
     [RequireComponent(typeof(Image))]
     public sealed class MornLocalizeImage : MonoBehaviour

@@ -3,7 +3,7 @@ using UniRx;
 using UnityEngine;
 using VContainer;
 
-namespace MornLocalize
+namespace MornLib
 {
     [ExecuteAlways]
     public sealed class MornLocalizeText : MonoBehaviour

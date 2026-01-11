@@ -1,4 +1,4 @@
-﻿namespace MornLocalize
+﻿namespace MornLib
 {
     public enum MornLocalizeStringType
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MornLocalize
+namespace MornLib
 {
     /// <summary> 言語名 -> その言語のシート </summary>
     [Serializable]

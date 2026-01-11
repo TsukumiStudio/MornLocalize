@@ -1,8 +1,7 @@
 using System;
-using MornUGUI;
 using UnityEngine;
 
-namespace MornLocalize.Button
+namespace MornLib
 {
     [ExecuteAlways]
     [DisallowMultipleComponent]

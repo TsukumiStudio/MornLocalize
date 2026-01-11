@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
-using UnityEngine.UI;
 using VContainer;
 
-namespace MornLocalize
+namespace MornLib
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public sealed class MornLocalizeSprite : MonoBehaviour

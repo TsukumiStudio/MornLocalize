@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using MornDebug;
 using UnityEngine;
 
-namespace MornLocalize
+namespace MornLib
 {
     [CreateAssetMenu(fileName = nameof(MornLocalizeDebugMenu), menuName = "Morn/" + nameof(MornLocalizeDebugMenu))]
     public sealed class MornLocalizeDebugMenu : MornDebugMenuBase

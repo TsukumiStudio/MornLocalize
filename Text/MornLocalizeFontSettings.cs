@@ -1,13 +1,10 @@
 using System;
 using System.Collections.Generic;
-using MornUGUI;
 using UnityEngine;
 
-namespace MornLocalize
+namespace MornLib
 {
-    [CreateAssetMenu(
-        fileName = nameof(MornLocalizeFontSettings),
-        menuName = "Morn/" + nameof(MornLocalizeFontSettings))]
+    [CreateAssetMenu(fileName = nameof(MornLocalizeFontSettings), menuName = "Morn/" + nameof(MornLocalizeFontSettings))]
     public sealed class MornLocalizeFontSettings : ScriptableObject
     {
         [Serializable]

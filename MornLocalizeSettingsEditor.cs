@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
-namespace MornLocalize
+namespace MornLib
 {
     [CustomEditor(typeof(MornLocalizeSettings))]
     internal sealed class MornLocalizeSettingsEditor : Editor

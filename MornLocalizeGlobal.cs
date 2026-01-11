@@ -1,17 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Threading;
+﻿using System.Threading;
 using Cysharp.Threading.Tasks;
-using MornGlobal;
 using UnityEngine;
 
-[assembly: InternalsVisibleTo("MornLocalize.Editor")]
-namespace MornLocalize
+namespace MornLib
 {
     [CreateAssetMenu(fileName = nameof(MornLocalizeGlobal), menuName = "Morn/" + nameof(MornLocalizeGlobal))]
     public sealed class MornLocalizeGlobal : MornGlobalBase<MornLocalizeGlobal>
     {
-        protected override string ModuleName => nameof(MornLocalize);
+        public override string ModuleName => "MornLocalize";
         [SerializeField] private MornLocalizeSettings _settings;
         [SerializeField] private string _debugLanguageKey = "jp";
         public MornLocalizeSettings Settings => _settings;

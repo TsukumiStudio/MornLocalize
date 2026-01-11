@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MornLocalize
+namespace MornLib
 {
     [Serializable]
     internal class KeyToContentDictionary : SerializedDictionary<string, string>

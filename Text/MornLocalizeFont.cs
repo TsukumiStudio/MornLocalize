@@ -1,9 +1,8 @@
 using UniRx;
 using UnityEngine;
 using VContainer;
-using MornUGUI;
 
-namespace MornLocalize
+namespace MornLib
 {
     [ExecuteAlways]
     [RequireComponent(typeof(MornUGUITextSetter))]

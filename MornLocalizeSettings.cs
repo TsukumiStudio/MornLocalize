@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using MornSpreadSheet;
 using UnityEngine;
 
-namespace MornLocalize
+namespace MornLib
 {
     [CreateAssetMenu(fileName = nameof(MornLocalizeSettings), menuName = "Morn/" + nameof(MornLocalizeSettings))]
     public sealed class MornLocalizeSettings : ScriptableObject

@@ -7,7 +7,7 @@ namespace MornLib
     [CreateAssetMenu(fileName = nameof(MornLocalizeGlobal), menuName = "Morn/" + nameof(MornLocalizeGlobal))]
     public sealed class MornLocalizeGlobal : MornGlobalBase<MornLocalizeGlobal>
     {
-        public override string ModuleName => "MornLocalize";
+        protected override string ModuleName => "MornLocalize";
         [SerializeField] private MornLocalizeSettings _settings;
         [SerializeField] private string _debugLanguageKey = "jp";
         public MornLocalizeSettings Settings => _settings;

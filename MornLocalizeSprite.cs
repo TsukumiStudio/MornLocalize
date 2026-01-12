@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
-using VContainer;
 
 namespace MornLib
 {
@@ -10,7 +9,6 @@ namespace MornLib
     {
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private List<MornLocalizeSpriteSet> _images = new();
-        [Inject] private MornLocalizeCore _core;
 
         private void Reset()
         {
@@ -19,8 +17,8 @@ namespace MornLib
 
         private void Awake()
         {
-            _core.OnLanguageChanged.Subscribe(UpdateSprite).AddTo(this);
-            UpdateSprite(_core.CurrentLanguage);
+            MornLocalizeCore.OnLanguageChanged.Subscribe(UpdateSprite).AddTo(this);
+            UpdateSprite(MornLocalizeCore.CurrentLanguage);
         }
 
         private void UpdateSprite(string languageKey)

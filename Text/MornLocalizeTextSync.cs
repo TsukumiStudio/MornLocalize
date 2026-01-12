@@ -1,5 +1,4 @@
 using UnityEngine;
-using VContainer;
 
 namespace MornLib
 {
@@ -8,7 +7,6 @@ namespace MornLib
     {
         [SerializeField] private MornLocalizeText[] _texts;
         [SerializeField] private MornLocalizeString _localize;
-        [Inject] private MornLocalizeCore _core;
 
         private void OnValidate()
         {

@@ -1,3 +1,4 @@
+#if USE_MORN_DEBUG
 using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
@@ -6,7 +7,7 @@ using UnityEngine;
 namespace MornLib
 {
     [CreateAssetMenu(fileName = nameof(MornLocalizeDebugMenu), menuName = "Morn/" + nameof(MornLocalizeDebugMenu))]
-    public sealed class MornLocalizeDebugMenu : MornDebugMenuBase
+    internal sealed class MornLocalizeDebugMenu : MornDebugMenuBase
     {
         public override IEnumerable<(string key, Action action)> GetMenuItems()
         {
@@ -25,3 +26,4 @@ namespace MornLib
         }
     }
 }
+#endif

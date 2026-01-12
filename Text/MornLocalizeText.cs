@@ -1,7 +1,6 @@
 using TMPro;
 using UniRx;
 using UnityEngine;
-using VContainer;
 
 namespace MornLib
 {
@@ -10,8 +9,7 @@ namespace MornLib
     {
         [SerializeField, ReadOnly] private TMP_Text _label;
         [SerializeField] private MornLocalizeString _text;
-        [Inject] private MornLocalizeCore _core;
-        
+
         public MornLocalizeString Text
         {
             get => _text;
@@ -20,10 +18,10 @@ namespace MornLib
 
         private void OnEnable()
         {
-            if (Application.isPlaying && _core != null)
+            if (Application.isPlaying)
             {
-                _core.OnLanguageChanged.Subscribe(Adjust).AddTo(this);
-                Adjust(_core.CurrentLanguage);
+                MornLocalizeCore.OnLanguageChanged.Subscribe(Adjust).AddTo(this);
+                Adjust(MornLocalizeCore.CurrentLanguage);
             }
         }
 

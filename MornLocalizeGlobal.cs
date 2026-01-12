@@ -11,7 +11,7 @@ namespace MornLib
         [SerializeField] private MornLocalizeSettings _settings;
         [SerializeField] private string _debugLanguageKey = "jp";
         public MornLocalizeSettings Settings => _settings;
-        internal string DebugLanguageKey => _debugLanguageKey;
+        public string DebugLanguageKey => _debugLanguageKey;
 
         public static void OpenMasterData()
         {
@@ -21,21 +21,6 @@ namespace MornLib
         public async static UniTask UpdateMasterDataAsync(CancellationToken ct = default)
         {
             await I.Settings.UpdateAsync();
-        }
-
-        internal static void Log(string message)
-        {
-            I.LogInternal(message);
-        }
-
-        internal static void LogWarning(string message)
-        {
-            I.LogWarningInternal(message);
-        }
-
-        internal static void LogError(string message)
-        {
-            I.LogErrorInternal(message);
         }
 
         internal static void SetDirty(Object obj)

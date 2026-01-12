@@ -40,7 +40,7 @@ namespace MornLib
             }
             else
             {
-                MornLocalizeGlobal.LogWarning($"Keyが重複しています。Language: {language} Key: {key} ");
+                MornLocalizeGlobal.Logger.LogWarning($"Keyが重複しています。Language: {language} Key: {key} ");
             }
         }
 

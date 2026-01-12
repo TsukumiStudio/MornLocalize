@@ -12,13 +12,12 @@ namespace MornLib
     public static class MornLocalizeDownloader
     {
         /// <summary>進捗表示付きで更新</summary>
-        public async static UniTask UpdateWithProgressAsync(MornLocalizeSettings settings, bool isUpdateSheet,
-            bool isUpdateKey)
+        public async static UniTask UpdateWithProgressAsync(MornLocalizeSettings settings, bool isUpdateSheet, bool isUpdateKey)
         {
             var masterList = settings.GetMasterList();
             if (masterList.Count == 0)
             {
-                MornLocalizeGlobal.LogError("マスターデータがありません。");
+                MornLocalizeGlobal.Logger.LogError("マスターデータがありません。");
                 return;
             }
 
@@ -37,7 +36,7 @@ namespace MornLib
             try
             {
                 await UniTask.SwitchToMainThread();
-                MornLocalizeGlobal.Log("<size=30>タスク開始</size>");
+                MornLocalizeGlobal.Logger.Log("<size=30>タスク開始</size>");
                 if (isUpdateSheet)
                 {
                     var currentSheetIndex = 0;
@@ -61,10 +60,7 @@ namespace MornLib
                             }
 
                             // タスクの実行中は定期的に進捗バーを再表示してUIをブロック
-                            var downloadTask = MornSpreadSheetDownloader.LoadSheetAsync(
-                                master.SheetId,
-                                sheetName,
-                                cancellationTokenSource.Token);
+                            var downloadTask = MornSpreadSheetDownloader.LoadSheetAsync(master.SheetId, sheetName, cancellationTokenSource.Token);
                             while (!downloadTask.Status.IsCompleted())
                             {
                                 // 進捗バーを再表示してUIをブロック
@@ -116,17 +112,17 @@ namespace MornLib
                 AssetDatabase.SaveAssets();
                 if (!cancellationTokenSource.Token.IsCancellationRequested)
                 {
-                    MornLocalizeGlobal.Log("<size=30>タスク完了</size>");
+                    MornLocalizeGlobal.Logger.Log("<size=30>タスク完了</size>");
                 }
             }
             catch (OperationCanceledException)
             {
-                MornLocalizeGlobal.Log("<size=30>タスクがキャンセルされました</size>");
+                MornLocalizeGlobal.Logger.Log("<size=30>タスクがキャンセルされました</size>");
             }
             catch (Exception ex)
             {
                 EditorUtility.DisplayDialog("エラー", $"エラーが発生しました: {ex.Message}", "OK");
-                MornLocalizeGlobal.LogError($"タスク中にエラーが発生しました: {ex}");
+                MornLocalizeGlobal.Logger.LogError($"タスク中にエラーが発生しました: {ex}");
             }
             finally
             {
@@ -136,8 +132,7 @@ namespace MornLib
         }
 
         /// <summary>キーを更新する</summary>
-        private async static UniTask UpdateKeysAsync(MornLocalizeSettings settings,
-            IReadOnlyList<MornSpreadSheetMaster> masterList, CancellationToken cancellationToken)
+        private async static UniTask UpdateKeysAsync(MornLocalizeSettings settings, IReadOnlyList<MornSpreadSheetMaster> masterList, CancellationToken cancellationToken)
         {
             settings.ClearDictionary();
             foreach (var master in masterList)
@@ -156,8 +151,7 @@ namespace MornLib
                         var key = row.GetCell(1).AsString();
                         if (string.IsNullOrWhiteSpace(key))
                         {
-                            MornLocalizeGlobal.LogWarning(
-                                $"{sheet.SheetName} シートに空のキーが存在するためスキップします。\n該当行:{row.AsString()}");
+                            MornLocalizeGlobal.Logger.LogWarning($"{sheet.SheetName} シートに空のキーが存在するためスキップします。\n該当行:{row.AsString()}");
                             continue;
                         }
 

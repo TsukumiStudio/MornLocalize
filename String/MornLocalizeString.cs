@@ -26,6 +26,11 @@ namespace MornLib
             set => _debugString = value;
         }
 
+        public string Get()
+        {
+            return Get(MornLocalizeCore.CurrentLanguage);
+        }
+        
         public string Get(string language)
         {
             return _type switch

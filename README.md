@@ -1,54 +1,53 @@
-﻿# 概要
+# MornLocalize
 
-事前にローカルに落としたスプレッドシートを元に、簡易的な多言語対応ができる自分用ライブラリ
+## 概要
 
-言語及びキー指定により、対応した言語の文字列を取得できる
+Googleスプレッドシートを使った多言語テキスト・画像管理ライブラリ。
+
+## 依存関係
+
+| 種別 | 名前 |
+|------|------|
+| 外部パッケージ | UniTask, UniRx, TextMesh Pro |
+| Mornライブラリ | MornSpreadSheet, MornGlobal |
+
+## 使い方
+
+### スプレッドシートの準備
+
+以下の形式でスプレッドシートを作成します。
+
+|            | jp   | en  | ... |
+|------------|------|-----|-----|
+| system.yes | はい | Yes | ... |
+| system.no  | いいえ | No  | ... |
+
+### セットアップ
+
+1. Projectウィンドウで右クリック → `MornLocalize/MornLocalizeMasterData` を作成
+2. `SheetId` と `SheetName` を設定
+3. `DefaultLanguage` にデフォルトの言語を設定
+4. `Load` ボタンを押す
+
+### コードでの使用
 
 ```csharp
-[SerializeField] private MornLocalizeMasterData localizeAsset;
-[SerializeField] private Text label;
+// 直接取得
+var text = settings.Get("jp", "system.yes");
 
-void Start()
-{
-    label.text = localizeAsset.Get("jp", "system.yes");
-}
+// MornLocalizeStringを使用（推奨）
+[SerializeField] private MornLocalizeString _text;
+string value = _text.Get();       // 現在の言語で取得
+string value = _text.Get("en");   // 指定言語で取得
 ```
 
-### 動作確認環境
+### 言語切り替え
 
-- Unity 2022.3.14f1
+```csharp
+MornLocalizeCore.ChangeLanguage("en");
+```
 
-### 依存ライブラリ
+### UIコンポーネント
 
-- UniTask
-    - https://github.com/Cysharp/UniTask
-    - 通信の待機に用いている
-- MornSpreadSheet
-    - https://github.com/matsufriends/MornSpreadSheet
-    - スプレッドシートの取得/整形に用いている
-
-# 使い方
-
-- 適当なスプレッドシートを用意する
-    - 1行目に、言語を記載する
-    - 2行目以降に、キーと言語ごとの対応を記載する
-
-|            | jp  | en  | ... |
-|------------|-----|-----|-----|
-| system.yes | はい  | Yes | ... |
-| system.no  | いいえ | No  | ... |
-| ...        | ... | ... | ... |
-
-- スプレッドシートのIDをメモ
-    - https://docs.google.com/spreadsheets/d/スプレッドシートのID
-- シート名をメモ
-    - Sheet1
-
-- Unityに戻り、Project欄を右クリック、`MornLocalize/MornLocalizeMasterData`を作成
-    - `SheetId`と`SheetName`にそれぞれメモした値を設定
-    - `DefaultLanguage` にデフォルトの言語を設定
-    - `Load`ボタンを押す
-- `MornLocalizeMasterData` アセットを参照し、言語やキーを指定して対応した文字列を取得する
-
-### その他
-- `DefineSymbol` に `DISABLE_MORN_LOCALIZE_LOG` を設定すると、ログ出力を無効化できる
+- **MornLocalizeText**: TextMesh Pro テキストと連携
+- **MornLocalizeImage/Sprite**: 画像の言語切り替え

@@ -56,7 +56,7 @@ namespace MornLib
             if (_label.text != text)
             {
                 _label.text = text;
-                MornLocalizeGlobal.SetDirty(_label);
+                MornGlobalUtil.SetDirty(_label);
             }
         }
     }

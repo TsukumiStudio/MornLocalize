@@ -22,10 +22,5 @@ namespace MornLib
         {
             await I.Settings.UpdateAsync();
         }
-
-        internal static void SetDirty(Object obj)
-        {
-            I.SetDirtyInternal(obj);
-        }
     }
 }

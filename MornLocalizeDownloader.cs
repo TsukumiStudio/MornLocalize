@@ -132,7 +132,7 @@ namespace MornLib
         }
 
         /// <summary>キーを更新する</summary>
-        private async static UniTask UpdateKeysAsync(MornLocalizeSettings settings, IReadOnlyList<MornSpreadSheetMaster> masterList, CancellationToken cancellationToken)
+        private static UniTask UpdateKeysAsync(MornLocalizeSettings settings, IReadOnlyList<MornSpreadSheetMaster> masterList, CancellationToken cancellationToken)
         {
             settings.ClearDictionary();
             foreach (var master in masterList)
@@ -145,7 +145,7 @@ namespace MornLib
                     {
                         if (cancellationToken.IsCancellationRequested)
                         {
-                            return;
+                            return UniTask.CompletedTask;
                         }
 
                         var key = row.GetCell(1).AsString();
@@ -178,6 +178,8 @@ namespace MornLib
                     }
                 }
             }
+
+            return UniTask.CompletedTask;
         }
     }
 }

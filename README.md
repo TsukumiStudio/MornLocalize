@@ -1,53 +1,36 @@
 # MornLocalize
 
+<p align="center">
+  <img src="src/Editor/MornLocalize.png" alt="MornLocalize" width="640" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/github/license/TsukumiStudio/MornLocalize" alt="License" />
+</p>
+
 ## 概要
 
-Googleスプレッドシートを使った多言語テキスト・画像管理ライブラリ。
+Unity 向けの簡単に使えるローカライズフレームワーク。Google Sheets を使ったマスターデータ管理、テキスト / スプライト / 画像の動的切り替えに対応。
 
-## 依存関係
+## 導入方法
 
-| 種別 | 名前 |
-|------|------|
-| 外部パッケージ | UniTask, UniRx, TextMesh Pro |
-| Mornライブラリ | MornSpreadSheet, MornGlobal |
+Unity Package Manager で以下の Git URL を追加:
 
-## 使い方
-
-### スプレッドシートの準備
-
-以下の形式でスプレッドシートを作成します。
-
-|            | jp   | en  | ... |
-|------------|------|-----|-----|
-| system.yes | はい | Yes | ... |
-| system.no  | いいえ | No  | ... |
-
-### セットアップ
-
-1. Projectウィンドウで右クリック → `MornLocalize/MornLocalizeMasterData` を作成
-2. `SheetId` と `SheetName` を設定
-3. `DefaultLanguage` にデフォルトの言語を設定
-4. `Load` ボタンを押す
-
-### コードでの使用
-
-```csharp
-// 直接取得
-var text = settings.Get("jp", "system.yes");
-
-// MornLocalizeStringを使用（推奨）
-[SerializeField] private MornLocalizeString _text;
-string value = _text.Get();       // 現在の言語で取得
-string value = _text.Get("en");   // 指定言語で取得
+```
+https://github.com/TsukumiStudio/MornLocalize.git?path=src#1.0.0
 ```
 
-### 言語切り替え
+`Window > Package Manager > + > Add package from git URL...` に貼り付けてください。
 
-```csharp
-MornLocalizeCore.ChangeLanguage("en");
-```
+### 依存パッケージ
 
-### UIコンポーネント
+- [UniRx](https://github.com/neuecc/UniRx) (`com.neuecc.unirx`)
+- [UniTask](https://github.com/Cysharp/UniTask) (`com.cysharp.unitask`)
+- [TextMeshPro](https://docs.unity3d.com/Packages/com.unity.textmeshpro@latest) (`com.unity.textmeshpro`)
+- [MornGlobal](https://github.com/TsukumiStudio/MornGlobal) (`com.tsukumistudio.mornglobal`)
+- [MornDebug](https://github.com/TsukumiStudio/MornDebug) (`com.tsukumistudio.morndebug`)
+- [MornSpreadSheet](https://github.com/TsukumiStudio/MornSpreadSheet) (`com.tsukumistudio.mornspreadsheet`)
 
-- **MornLocalizeText**: TextMesh Pro テキストと連携
-- **MornLocalizeImage/Sprite**: 画像の言語切り替え
+## ライセンス
+
+[The Unlicense](LICENSE)

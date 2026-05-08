@@ -132,7 +132,12 @@ namespace MornLib
         }
 
         /// <summary>キーを更新する</summary>
-        private async static UniTask UpdateKeysAsync(MornLocalizeSettings settings, IReadOnlyList<MornSpreadSheetMaster> masterList, CancellationToken cancellationToken)
+        private static UniTask UpdateKeysAsync(MornLocalizeSettings settings, IReadOnlyList<MornSpreadSheetMaster> masterList, CancellationToken cancellationToken)
+        {
+            UpdateKeys(settings, masterList, cancellationToken);
+            return UniTask.CompletedTask;
+        }
+        private static void UpdateKeys(MornLocalizeSettings settings, IReadOnlyList<MornSpreadSheetMaster> masterList, CancellationToken cancellationToken)
         {
             settings.ClearDictionary();
             foreach (var master in masterList)

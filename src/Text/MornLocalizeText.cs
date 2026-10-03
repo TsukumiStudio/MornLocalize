@@ -9,6 +9,7 @@ namespace MornLib
     {
         [SerializeField, ReadOnly] private TMP_Text _label;
         [SerializeField] private MornLocalizeString _text;
+        private SingleAssignmentDisposable _languageSubscription;
 
         public MornLocalizeString Text
         {
@@ -20,7 +21,12 @@ namespace MornLib
         {
             if (Application.isPlaying)
             {
-                MornLocalizeCore.OnLanguageChanged.Subscribe(Adjust).AddTo(this);
+                if (_languageSubscription == null || _languageSubscription.IsDisposed)
+                {
+                    _languageSubscription = new SingleAssignmentDisposable();
+                    _languageSubscription.Disposable = MornLocalizeCore.OnLanguageChanged.Subscribe(Adjust);
+                    _languageSubscription.AddTo(this);
+                }
                 Adjust(MornLocalizeCore.CurrentLanguage);
             }
         }
